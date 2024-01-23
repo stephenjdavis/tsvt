@@ -1,11 +1,11 @@
 # TSVT
 # Author: Stephen Davis 
 # Repo created 1/23/24
-Tablesau Server Verification Tool
+Tableau Server Verification Tool
 
 This is just an initial repo for a work in progress. It uses the "pytest" test framework as opposed to using "unittest".
 Providing the basic structure and logic. Here are likely the benefits of this tool which might not be as accessible simply using 
-built-in Tableau Server metrics and customizeable options:
+built-in Tableau Server metrics and customizable options:
 
 The importance of specific features in TSVT depends on your organization's priorities, use cases, and Tableau Server deployment requirements. However, here are five aspects that are generally considered important:
 
