@@ -1,0 +1,37 @@
+<project>
+  <parameters>
+    <!-- Define project parameters as needed -->
+  </parameters>
+
+  <build-type id="TSVT_BuildConfig" name="TSVT Build Configuration">
+    <vcs-root-entries>
+      <!-- Define VCS root entries -->
+    </vcs-root-entries>
+
+    <steps>
+      <step id="Step_RunTests" name="Run Tests">
+        <type id="simpleRunner" />
+        <execution-policy id="RUN_AS_IS" />
+        <parameters>
+          <param name="script.content" value="scripts/run_tests.sh" />
+        </parameters>
+      </step>
+
+      <!-- Add other steps as needed -->
+    </steps>
+
+    <features>
+      <feature id="xml-report-processing" type="xml-report-plugin">
+        <param name="xmlReportParsingRules" value="reports/test-results.xml" />
+      </feature>
+
+      <!-- Add other features as needed -->
+    </features>
+
+    <dependencies>
+      <!-- Define build dependencies if applicable -->
+    </dependencies>
+
+    <!-- Add other build configuration settings as needed -->
+  </build-type>
+</project>
