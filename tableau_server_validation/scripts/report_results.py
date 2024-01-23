@@ -1,6 +1,6 @@
 from tableau_api_lib import TableauServerConnection
 from tableau_api_lib.utils.querying import get_projects, get_project_id
-from constants.constants import Paths
+from constants.constants import REPORTS_DIR, XML_DIR, LOGS_DIR
 
 import configparser
 import xml.etree.ElementTree as ET
@@ -27,6 +27,7 @@ def create_tableau_workbook(config, test_results):
     # ...
 
     # Create a basic test results visualization (modify as needed)
+    connection = TableauServerConnection
     connection.workbooks.populate()
     test_results_viz = connection.workbooks.get_by_name('Test Results')
 
@@ -49,7 +50,7 @@ if __name__ == "__main__":
     config = read_config()
 
     # Specify the path to the XML test results file
-    xml_results_file = 'Paths.RESULT_DIR/test_results.xml'
+    xml_results_file = REPORTS_DIR + '/test_results.xml'
 
     # Read and parse test results from XML file
     test_results = read_test_results(xml_results_file)

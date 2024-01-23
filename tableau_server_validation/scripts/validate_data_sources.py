@@ -14,6 +14,7 @@ def validate_data_sources(tableau_server_url):
     - Exception: An exception is raised if validation fails.
     """
     try:
+        # We will probably grab auth info from files instead of CyberArk.
         # Retrieve CyberArk credential for Tableau Server API authentication
         cyberark_credential = get_cyberark_credential("tableau-server-api-credential")
 

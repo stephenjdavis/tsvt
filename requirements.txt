@@ -1,0 +1,5 @@
+# Core dependencies
+requests==2.26.0  # For making HTTP requests
+tableauserverclient==0.11.0  # For interacting with Tableau Server REST API
+pytest==6.2.5  # For running tests
+pylint==2.9.6  # For code linting

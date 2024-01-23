@@ -1,4 +1,10 @@
+import os
+from constants.constants import REPORTS_DIR, XML_DIR, LOGS_DIR
 import re
+
+def generate_report_filename(report_name):
+    # Use constants in your code
+    return os.path.join(REPORTS_DIR, f'{report_name}.txt')
 
 
 def validate_url(url):
