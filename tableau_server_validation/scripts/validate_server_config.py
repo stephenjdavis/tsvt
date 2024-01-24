@@ -54,5 +54,3 @@ if __name__ == '__main__':
 
     # Call the validation function
     validate_server_configuration(tableau_server_url)
-
-

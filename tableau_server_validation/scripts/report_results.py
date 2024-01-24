@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 
 def read_config():
     config = configparser.ConfigParser()
-    config.read('config.ini')
+    config.read('tsvt_config.ini')
     return config
 
 def read_test_results(xml_file):
@@ -23,30 +23,45 @@ def read_test_results(xml_file):
     return test_results
 
 def create_tableau_workbook(config, test_results):
-    # Rest of the Tableau workbook creation script
-    # ...
+    # Replace the following placeholders with actual Tableau Server connection details
+    server = config.get('TableauServer', 'server')
+    username = config.get('TableauServer', 'username')
+    password = config.get('TableauServer', 'password')
+    site = config.get('TableauServer', 'site')
 
-    # Create a basic test results visualization (modify as needed)
-    connection = TableauServerConnection
-    connection.workbooks.populate()
-    test_results_viz = connection.workbooks.get_by_name('Test Results')
+    # Initialize Tableau Server connection
+    connection = TableauServerConnection(server, username, password, site=site)
+    connection.sign_in()
 
-    # Create a worksheet
-    new_worksheet = connection.workbooks.create_project_worksheet(test_results_viz.id, 'Test Results')
+    # Placeholder: Create a new Tableau workbook
+    workbook_name = "Test_Results_Workbook"
+    project_name = "Your_Project_Name"
 
-    # Create a basic test results visualization (modify as needed)
+    # Check if the project exists, if not, create it
+    projects = get_projects(connection)
+    project_id = get_project_id(projects, project_name)
+    if not project_id:
+        project_id = connection.projects.create(project_name)['id']
+
+    # Placeholder: Create a new workbook in the specified project
+    new_workbook = connection.workbooks.create(workbook_name, project_id)
+
+    # Placeholder: Create a new worksheet in the workbook
+    new_worksheet = connection.workbooks.create_project_worksheet(new_workbook.id, 'Test_Results')
+
+    # Placeholder: Create a view with test results data
     test_results_data = [{'Test Name': test_name, 'Status': status} for test_name, status in test_results]
-    view = connection.views.create(new_worksheet.id, test_results_data, 'Test Results Viz')
+    view = connection.views.create(new_worksheet.id, test_results_data, 'Test_Results_Viz')
 
-    # Save changes
+    # Placeholder: Save changes and refresh the workbook
     connection.workbooks.populate()
-    connection.workbooks.refresh(test_results_viz.id)
+    connection.workbooks.refresh(new_workbook.id)
 
-    # Sign out
+    # Placeholder: Sign out
     connection.sign_out()
 
 if __name__ == "__main__":
-    # Read configuration from the config.ini file
+    # Read configuration from the tsvt_config.ini file
     config = read_config()
 
     # Specify the path to the XML test results file
@@ -57,4 +72,3 @@ if __name__ == "__main__":
 
     # Create Tableau workbook and visualization
     create_tableau_workbook(config, test_results)
-
